@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: dk.tv2.cynical.content
+---
+testFramework: spock
+sourceLanguage: groovy
