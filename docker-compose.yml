@@ -17,6 +17,16 @@ services:
     - 6379:6379
     volumes:
     - ./redis_volumes/rec_db:/data
+  content-api:
+    container_name: content-api_unstable
+    ports:
+    - 8081:8080
+    image: content-api:unstable
+    build:
+      context: ./content-api
+      dockerfile: Dockerfile
+    environment:
+      REDIS_URI: redis://content-redis
   content-redis:
     container_name: content-redis
     image: redis:5
@@ -24,3 +34,4 @@ services:
     - 6380:6379
     volumes:
     - ./redis_volumes/content_db:/data
+  
