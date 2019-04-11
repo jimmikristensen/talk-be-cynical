@@ -1,0 +1,26 @@
+version: '3'
+services:
+  recommendations:
+    container_name: recommendations-api_unstable
+    ports:
+    - 8082:8080
+    image: recommendations-api:unstable
+    build:
+      context: ./recommendations-api
+      dockerfile: Dockerfile
+    environment:
+      REDIS_URI: redis://recommendations-redis
+  recommendations-redis:
+    container_name: recommendations-redis
+    image: redis:5
+    ports:
+    - 6379:6379
+    volumes:
+    - ./redis_volumes/rec_db:/data
+  content-redis:
+    container_name: content-redis
+    image: redis:5
+    ports:
+    - 6380:6379
+    volumes:
+    - ./redis_volumes/content_db:/data

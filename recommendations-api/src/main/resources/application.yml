@@ -1,0 +1,11 @@
+---
+micronaut:
+    application:
+        name: recommendations-api
+    server:
+        port: 8080
+
+---
+redis:
+    uri: redis://localhost
+    timeout: 10s
