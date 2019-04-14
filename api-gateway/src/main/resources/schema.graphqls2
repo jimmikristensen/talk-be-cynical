@@ -1,0 +1,13 @@
+type Query {
+    entity : [Entity]
+}
+
+type Entity {
+    api : String
+    type : String
+    title : String
+    description : String
+    imageURL : String
+    numEpisodes : Int
+    numSeasons : Int
+}

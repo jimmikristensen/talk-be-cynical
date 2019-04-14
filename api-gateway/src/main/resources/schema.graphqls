@@ -1,4 +1,14 @@
 type Query {
+    hello : Recommendation
+    hello2 : Content
+}
 
-    hello(name: String): String!
+type Recommendation {
+    api : String
+    type : String
+}
+
+type Content {
+    api : String
+    type : String
 }
