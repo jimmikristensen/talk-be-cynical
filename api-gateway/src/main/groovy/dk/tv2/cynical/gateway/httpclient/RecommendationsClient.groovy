@@ -5,7 +5,7 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 import io.reactivex.Maybe
 
-@Client('http://localhost:8082')
+@Client('http://localhost:8091')
 interface RecommendationsClient {
 
     @Get('/recommendations')

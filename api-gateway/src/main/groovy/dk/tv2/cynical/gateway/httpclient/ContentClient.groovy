@@ -6,7 +6,7 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 import io.reactivex.Maybe
 
-@Client('http://localhost:8081')
+@Client('http://localhost:8090')
 interface ContentClient {
 
     @Get('/content')
