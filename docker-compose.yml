@@ -1,6 +1,6 @@
 version: '3'
 services:
-  recommendations:
+  recommendations-api:
     container_name: recommendations-api_unstable
     ports:
     - 8082:8080
@@ -34,4 +34,3 @@ services:
     - 6380:6379
     volumes:
     - ./redis_volumes/content_db:/data
-  
