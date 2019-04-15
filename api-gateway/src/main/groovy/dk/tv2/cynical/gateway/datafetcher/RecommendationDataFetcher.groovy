@@ -8,10 +8,11 @@ import groovy.transform.CompileStatic
 import io.reactivex.Single
 
 import javax.inject.Singleton
+import java.util.concurrent.CompletableFuture
 
 @Singleton
 @CompileStatic
-class RecommendationDataFetcher implements DataFetcher<Recommendation> {
+class RecommendationDataFetcher implements DataFetcher<CompletableFuture<Recommendation>> {
 
     private final RecommendationsClient recommendationsClient
 
@@ -20,7 +21,7 @@ class RecommendationDataFetcher implements DataFetcher<Recommendation> {
     }
 
     @Override
-    Recommendation get(DataFetchingEnvironment environment) throws Exception {
+    CompletableFuture<Recommendation> get(DataFetchingEnvironment environment) throws Exception {
         String name = environment.getArgument("name")
         name = name?.trim() ?: "World"
         def t = "none"
@@ -35,7 +36,11 @@ class RecommendationDataFetcher implements DataFetcher<Recommendation> {
 //        def rec = new Recommendation(api: "testing", type: "some type")
 
 
-        return recommendationsClient.fetchRecommendation().blockingGet()
+
+        return recommendationsClient.fetchRecommendation()
+
+
+
 
 //        contentClient.fetchRecommendation().toSingle().subscribe(
 //            {
@@ -51,7 +56,4 @@ class RecommendationDataFetcher implements DataFetcher<Recommendation> {
 
     }
 
-    void testing(Recommendation test) {
-        println test.type
-    }
 }
