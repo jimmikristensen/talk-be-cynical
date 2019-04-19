@@ -1,0 +1,5 @@
+# Flush entire redis database
+FLUSHALL
+
+# pipe a set of redis commands into the database
+cat redis_content_data.txt | redis-cli -p 6380 --pipe
