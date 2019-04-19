@@ -1,7 +1,8 @@
 package dk.tv2.cynical.content
 
 class VideoMetadata {
-    String api = 'editorial_content'
+    String api = 'content-api'
+    String id
     String type
     String title
     String description
@@ -9,4 +10,6 @@ class VideoMetadata {
     Integer numEpisodes
     Integer numSeasons
     String genre
+    Integer episode
+    Integer season
 }
