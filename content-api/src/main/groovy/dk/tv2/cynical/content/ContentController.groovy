@@ -20,13 +20,11 @@ class ContentController {
 
     @Get("{?limit}")
     HttpResponse<String> index(@QueryValue('limit') @Nullable Integer limit) {
-        println "LIMIT ENDPOINT"
         return ok().body(contentRepository.fetchVideoMetadataWithLimit(limit))
     }
 
     @Get("/{key}")
     HttpResponse<String> index(String key) {
-        println "KEY ENDPOINT"
         return ok().body(contentRepository.fetchVideoMetadataByKey(key))
     }
 }
