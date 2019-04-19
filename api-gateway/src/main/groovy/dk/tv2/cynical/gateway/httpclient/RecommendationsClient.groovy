@@ -6,7 +6,7 @@ import io.micronaut.http.client.annotation.Client
 
 import java.util.concurrent.CompletableFuture
 
-@Client('http://localhost:8091')
+@Client('http://localhost:8082')
 interface RecommendationsClient {
 
     @Get('/recommendations')

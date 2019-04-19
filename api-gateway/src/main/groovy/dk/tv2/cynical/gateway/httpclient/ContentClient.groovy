@@ -7,9 +7,12 @@ import io.micronaut.http.client.annotation.Client
 
 import java.util.concurrent.CompletableFuture
 
-@Client('http://localhost:8090')
+@Client('http://localhost:8081')
 interface ContentClient {
 
     @Get('/content')
     CompletableFuture<Content[]> fetchContent()
+
+    @Get('/content/{limit}')
+    CompletableFuture<Content[]> fetchContent(int limit)
 }

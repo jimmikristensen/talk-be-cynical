@@ -22,7 +22,13 @@ class ContentDataFetcher implements DataFetcher<CompletableFuture<Content[]>> {
 
     @Override
     CompletableFuture<Content[]> get(DataFetchingEnvironment environment) throws Exception {
-        return contentClient.fetchContent()
+        def limitArg = environment.getArgument('limit')
+
+        if (limitArg in Integer) {
+            return contentClient.fetchContent(limitArg as int)
+        } else {
+            return contentClient.fetchContent()
+        }
     }
 
 }

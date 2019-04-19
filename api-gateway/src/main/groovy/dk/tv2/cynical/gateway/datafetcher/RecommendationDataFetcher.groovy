@@ -21,7 +21,6 @@ class RecommendationDataFetcher implements DataFetcher<CompletableFuture<Content
 
     @Override
     CompletableFuture<Content> get(DataFetchingEnvironment environment) throws Exception {
-//        String name = environment.getArgument("name")
         return recommendationsClient.fetchRecommendation()
 
     }
