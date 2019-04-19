@@ -4,11 +4,12 @@ import dk.tv2.cynical.gateway.model.Content
 
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
-import io.reactivex.Maybe
+
+import java.util.concurrent.CompletableFuture
 
 @Client('http://localhost:8090')
 interface ContentClient {
 
     @Get('/content')
-    Maybe<List<Content>> fetchContent()
+    CompletableFuture<Content[]> fetchContent()
 }

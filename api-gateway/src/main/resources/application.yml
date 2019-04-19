@@ -14,4 +14,7 @@ graphql:
         template-path: classpath:graphiql/index.html
         template-parameters:
         page-title: GraphiQL
-
+---
+jackson:
+    deserialization:
+        unwrapSingleValueArrays: true

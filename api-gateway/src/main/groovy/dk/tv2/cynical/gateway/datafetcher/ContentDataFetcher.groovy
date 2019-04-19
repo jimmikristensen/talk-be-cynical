@@ -8,10 +8,11 @@ import graphql.schema.DataFetchingEnvironment
 import groovy.transform.CompileStatic
 
 import javax.inject.Singleton
+import java.util.concurrent.CompletableFuture
 
 @Singleton
 @CompileStatic
-class ContentDataFetcher implements DataFetcher<Content> {
+class ContentDataFetcher implements DataFetcher<CompletableFuture<Content[]>> {
 
     private final ContentClient contentClient
 
@@ -20,36 +21,8 @@ class ContentDataFetcher implements DataFetcher<Content> {
     }
 
     @Override
-    Content get(DataFetchingEnvironment environment) throws Exception {
-        String name = environment.getArgument("name")
-        name = name?.trim() ?: "World"
-        def t = "none"
-
-//        return contentClient.fetchRecommendation().toSingle()
-
-        println "called"
-//        println environment
-
-//        return ['test1','test2']
-
-//        def rec = new Recommendation(api: "testing", type: "some type")
-
-
-        List<Content> contentList = contentClient.fetchContent().blockingGet()
-        return contentList.get(0)
-
-//        contentClient.fetchRecommendation().toSingle().subscribe(
-//            {
-//                Recommendation rec -> return rec.type
-//            },
-//            {
-//                throwable -> throwable.printStackTrace()
-//            }
-//        )
-
-
-//        return "test"
-
+    CompletableFuture<Content[]> get(DataFetchingEnvironment environment) throws Exception {
+        return contentClient.fetchContent()
     }
 
 }
