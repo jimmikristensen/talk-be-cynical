@@ -1,7 +1,7 @@
 package dk.tv2.cynical.gateway.model
 
 class Content {
-    String api = 'editorial'
+    String api
     String type
     String title
     String description
@@ -9,4 +9,6 @@ class Content {
     Integer numEpisodes
     Integer numSeasons
     String genre
+    Integer episode
+    Integer season
 }

@@ -1,6 +1,6 @@
 type Query {
     recommendationContent : Content
-    editorialContent(limit: Int) : [Content]
+    editorialContent(limit: Int, key: String) : [Content]
 }
 
 interface Content {
@@ -36,6 +36,6 @@ type Episode implements Content {
     title : String
     description : String
     imageURL : String
-    numEpisodes : Int
-    numSeasons : Int
+    episode : Int
+    season : Int
 }
