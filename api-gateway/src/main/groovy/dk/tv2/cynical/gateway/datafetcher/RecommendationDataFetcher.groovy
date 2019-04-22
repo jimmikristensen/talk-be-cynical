@@ -20,8 +20,14 @@ class RecommendationDataFetcher implements DataFetcher<CompletableFuture<Content
     }
 
     @Override
-    CompletableFuture<Content> get(DataFetchingEnvironment environment) throws Exception {
-        return recommendationsClient.fetchRecommendation()
+    CompletableFuture<Content[]> get(DataFetchingEnvironment environment) throws Exception {
+        def limitArg = environment.getArgument('limit')
+
+        if (limitArg in Integer) {
+            return recommendationsClient.fetchRecommendations(limitArg as int)
+        } else {
+            return recommendationsClient.fetchRecommendations()
+        }
 
     }
 

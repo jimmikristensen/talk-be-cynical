@@ -1,5 +1,5 @@
 type Query {
-    recommendationContent : Content
+    recommendationContent(limit: Int) : [Content]
     editorialContent(limit: Int, key: String) : [Content]
 }
 
