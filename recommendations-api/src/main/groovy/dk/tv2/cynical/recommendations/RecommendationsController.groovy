@@ -3,6 +3,10 @@ package dk.tv2.cynical.recommendations
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.http.annotation.QueryValue
+
+import javax.annotation.Nullable
+
 import static io.micronaut.http.HttpResponse.*
 
 
@@ -15,8 +19,8 @@ class RecommendationsController {
         this.recommendationsRepository = recommendationsRepository
     }
 
-    @Get("/")
-    HttpResponse<String> index() {
-        return ok().body(recommendationsRepository.fetchRecommendation())
+    @Get("{?limit}")
+    HttpResponse<String> index(@QueryValue('limit') @Nullable Integer limit) {
+        return ok().body(recommendationsRepository.fetchRecommendation(limit))
     }
 }

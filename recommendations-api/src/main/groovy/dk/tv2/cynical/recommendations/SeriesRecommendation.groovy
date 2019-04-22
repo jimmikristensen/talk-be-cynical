@@ -2,7 +2,8 @@ package dk.tv2.cynical.recommendations
 
 class SeriesRecommendation {
 
-    String api = 'recommendation'
+    String id
+    String api = 'recommendation-api'
     String type
     String title
     String description
