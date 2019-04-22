@@ -1,6 +1,7 @@
 package dk.tv2.cynical.gateway.model
 
 class Content {
+    String id
     String api
     String type
     String title

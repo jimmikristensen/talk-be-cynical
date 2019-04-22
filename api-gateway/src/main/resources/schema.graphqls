@@ -4,6 +4,7 @@ type Query {
 }
 
 interface Content {
+    id: String
     api : String
     type : String
     title : String
@@ -12,6 +13,7 @@ interface Content {
 }
 
 type Movie implements Content {
+    id: String
     api : String
     type : String
     title : String
@@ -21,6 +23,7 @@ type Movie implements Content {
 }
 
 type Series implements Content {
+    id: String
     api : String
     type : String
     title : String
@@ -31,6 +34,7 @@ type Series implements Content {
 }
 
 type Episode implements Content {
+    id: String
     api : String
     type : String
     title : String
