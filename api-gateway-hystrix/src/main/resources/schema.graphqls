@@ -1,0 +1,45 @@
+type Query {
+    recommendationContent(limit: Int) : [Content]
+    editorialContent(limit: Int, key: String) : [Content]
+}
+
+interface Content {
+    id: String
+    api : String
+    type : String
+    title : String
+    description : String
+    imageURL : String
+}
+
+type Movie implements Content {
+    id: String
+    api : String
+    type : String
+    title : String
+    description : String
+    imageURL : String
+    genre : String
+}
+
+type Series implements Content {
+    id: String
+    api : String
+    type : String
+    title : String
+    description : String
+    imageURL : String
+    numEpisodes : Int
+    numSeasons : Int
+}
+
+type Episode implements Content {
+    id: String
+    api : String
+    type : String
+    title : String
+    description : String
+    imageURL : String
+    episode : Int
+    season : Int
+}

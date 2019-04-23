@@ -1,0 +1,24 @@
+---
+micronaut:
+    application:
+        name: api-gateway-hystrix
+    server:
+        port: 8080
+---
+graphql:
+  enabled: true
+  path: /graphql
+  graphiql:
+    enabled: true
+    path: /graphiql
+    template-path: classpath:graphiql/index.html
+    template-parameters:
+    page-title: GraphiQL
+---
+jackson:
+  deserialization:
+    unwrapSingleValueArrays: true
+---
+hystrix:
+  stream:
+    enabled: false

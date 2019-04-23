@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: dk.tv2.cynical.gateway.hystrix
+---
+testFramework: spock
+sourceLanguage: groovy
