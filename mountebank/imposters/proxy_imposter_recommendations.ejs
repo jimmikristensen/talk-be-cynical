@@ -6,14 +6,15 @@
       "responses": [
         {
           "proxy": {
-            "to": "http://recommendations-api:8080/recommendations",
+            "to": "http://recommendationsapi:8080/recommendations",
             "mode": "proxyOnce",
             "addWaitBehavior": true,
             "predicateGenerators": [
               {
                 "matches": {
                   "method": true,
-                  "path": true
+                  "path": true,
+                  "query": true
                 }
               }
             ]

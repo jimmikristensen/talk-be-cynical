@@ -13,6 +13,13 @@
             "deepEquals": {
               "path": "/content"
             }
+          },
+          {
+            "deepEquals": {
+              "query": {
+                "limit": "1"
+              }
+            }
           }
         ],
         "responses": [
@@ -20,17 +27,69 @@
             "is": {
               "statusCode": 200,
               "headers": {
-                "Date": "Sun, 14 Apr 2019 15:54:51 GMT",
+                "Date": "Sun, 28 Apr 2019 14:39:21 GMT",
                 "content-type": "application/json",
-                "content-length": 2851,
+                "content-length": 377,
                 "connection": "close"
               },
-              "body": "[{\"api\":\"editorial_content\",\"type\":\"Movie\",\"title\":\"Alle for én\",\"description\":\"Politimanden Martin (Jon Lange) har voldsomt brug for at bevise sit værd over for sin chef, og derfor allierer han sig med sine tre gamle kriminelle barndomsvenner Nikolai (Jonatan Spang), Ralf (Mick Øgendahl) og Timo (Rasmus Bjerg) for at få dem til at hjælp med at fange narkobaronen Niemeyer (Rutger Hauer). Hvis de gør det, vil han sørge for at beviserne mod dem i en uheldig sag om nogle stjålne biler forsvinder. Men Ralf og Timo er ikke de skarpeste knive i skuffen - så selvfølgelig går planen helt galt!\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/27/40918027-f4f4fcfa0dea2ba59d0ea260f0f546a5.jpeg\",\"genre\":\"Komedie\"},{\"api\":\"editorial_content\",\"type\":\"Movie\",\"title\":\"Blue Jasmine\",\"description\":\"Jasmines privilegerede liv i New York styrter i grus, da hendes mand bliver afsløret som storsvindler - og efterfølgende begår selvmord i fængslet. Deprimeret, fallit og alkoholisk søger hun tilflugt hos sin søster Ginger i en lille lejlighed i San Francisco. Her forsøger hun at få sit liv på ret køl igen - men er det overhovedet muligt?\\nFilmen er en slags opdatering af klassikeren Omstigning til Paradis fra 1951. Cate Blanchett vandt en Oscar for 'Bedste kvindelige hovedrolle' for sin præstation i filmen.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/43/45502343-e46b05321e3e72afd98df980d3429659.jpeg\",\"genre\":\"Drama\"},{\"api\":\"editorial_content\",\"type\":\"Episode\",\"title\":\"Ondt i røven (1)\",\"description\":\"20-årige Tessa tager det store skridt og flytter fra en minkfarm på landet til et queer-kollektiv i København. Mens hun bliver taget imod med åbne arme af barndomsveninden Andrea, bliver hun hurtigt udfordret af sine nye roomies. Hvad er der galt med pels, og må man nu ikke spørge, hvor folk er fra?\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/66/45602466-a9fecc6df4df2c9fddc1643fa05bc2fc.jpeg\",\"numEpisodes\":1,\"numSeasons\":1},{\"api\":\"editorial_content\",\"type\":\"Series\",\"title\":\"Station 2: Fængslet\",\"description\":\"Der sidder op imod 250 indsatte i Danmarks nyeste fængsel. 'Station 2' har som det første tv-hold fået adgang til Storstrøm Fængsel på Falster og har i et halvt år fulgt de indsatte for at skildre deres hverdag.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/46/45718846-e606f448598f52474d0a1fa1d0b249ac.jpeg\",\"numEpisodes\":3,\"numSeasons\":2},{\"api\":\"editorial_content\",\"type\":\"Series\",\"title\":\"Hjem til gården\",\"description\":\"En flok danskere afprøver drømmen om 'det simple liv', når de flytter ind på en primitiv gård, der hverken har el eller rindende vand. De skal i fællesskab få en hverdag som selvforsynende til at fungere samtidig med, de kæmper om at vinde 500.000 kroner!\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/21/45701621-2331c2b2517d8d0710b1a40b076cffbd.jpeg\",\"numEpisodes\":55,\"numSeasons\":3}]",
+              "body": "[{\"api\":\"content-api\",\"id\":\"content:series-10\",\"type\":\"Series\",\"title\":\"Løb som en pige\",\"description\":\"Løb som en pige følger Visiline igennem fire afgørende år, hvor hun kæmper med at finde sin vej i en mandsdomineret og konservativ verden.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/59/45748359-98ed876d30f1634ce9181f4b013f56c6.jpeg\",\"numEpisodes\":10,\"numSeasons\":1}]",
               "_mode": "text",
-              "_proxyResponseTime": 1377
+              "_proxyResponseTime": 10
             },
             "_behaviors": {
-              "wait": 0
+              "wait": 10
+            }
+          }
+        ]
+      },
+      {
+        "predicates": [
+          {
+            "deepEquals": {
+              "method": "GET"
+            }
+          },
+          {
+            "deepEquals": {
+              "path": "/content"
+            }
+          },
+          {
+            "deepEquals": {
+              "query": {
+                "limit": "3"
+              }
+            }
+          }
+        ],
+        "responses": [
+          {
+            "is": {
+              "statusCode": 200,
+              "headers": {
+                "Date": "Sun, 28 Apr 2019 14:39:53 GMT",
+                "content-type": "application/json",
+                "content-length": 1556,
+                "connection": "close"
+              },
+              "body": "[{\"api\":\"content-api\",\"id\":\"content:series-10\",\"type\":\"Series\",\"title\":\"Løb som en pige\",\"description\":\"Løb som en pige følger Visiline igennem fire afgørende år, hvor hun kæmper med at finde sin vej i en mandsdomineret og konservativ verden.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/59/45748359-98ed876d30f1634ce9181f4b013f56c6.jpeg\",\"numEpisodes\":10,\"numSeasons\":1},{\"api\":\"content-api\",\"id\":\"content:series-5\",\"type\":\"Series\",\"title\":\"Station 2: Fængslet\",\"description\":\"Der sidder op imod 250 indsatte i Danmarks nyeste fængsel. 'Station 2' har som det første tv-hold fået adgang til Storstrøm Fængsel på Falster og har i et halvt år fulgt de indsatte for at skildre deres hverdag.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/46/45718846-e606f448598f52474d0a1fa1d0b249ac.jpeg\",\"numEpisodes\":3,\"numSeasons\":2},{\"api\":\"content-api\",\"id\":\"content:movie-1\",\"type\":\"Movie\",\"title\":\"Alle for én\",\"description\":\"Politimanden Martin (Jon Lange) har voldsomt brug for at bevise sit værd over for sin chef, og derfor allierer han sig med sine tre gamle kriminelle barndomsvenner Nikolai (Jonatan Spang), Ralf (Mick Øgendahl) og Timo (Rasmus Bjerg) for at få dem til at hjælp med at fange narkobaronen Niemeyer (Rutger Hauer). Hvis de gør det, vil han sørge for at beviserne mod dem i en uheldig sag om nogle stjålne biler forsvinder. Men Ralf og Timo er ikke de skarpeste knive i skuffen - så selvfølgelig går planen helt galt!\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/27/40918027-f4f4fcfa0dea2ba59d0ea260f0f546a5.jpeg\",\"genre\":\"Komedie\"}]",
+              "_mode": "text",
+              "_proxyResponseTime": 27
+            },
+            "_behaviors": {
+              "wait": 27
+            }
+          }
+        ]
+      },
+      {
+        "responses": [
+          {
+            "is": { 
+              "statusCode": 500
+            },
+            "_behaviors": {
+              "wait": 200
             }
           }
         ]
