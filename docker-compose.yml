@@ -34,6 +34,13 @@ services:
     - 6380:6379
     volumes:
     - ./redis_volumes/content_db:/data
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+    - 9080:8080
   # api-gateway-hystrix:
   #   container_name: api-gateway-hystrix
   #   build:
@@ -46,3 +53,13 @@ services:
     image: mlabouardy/hystrix-dashboard
     ports:
     - 9002:9002
+  mountebank:
+    container_name: mountebank
+    image: jkris/mountebank:latest
+    volumes:
+    - ./mountebank/imposters:/imposters
+    ports:
+    - 2525:2525
+    - 8090:8090
+    - 8091:8091
+    command: --configfile /imposters/imposters.ejs --allowInjection
