@@ -23,4 +23,5 @@ class RecommendationsController {
     HttpResponse<String> index(@QueryValue('limit') @Nullable Integer limit) {
         return ok().body(recommendationsRepository.fetchRecommendation(limit))
     }
+
 }
