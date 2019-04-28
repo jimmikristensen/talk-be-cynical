@@ -26,10 +26,9 @@ class ContentRepository {
 
     List<VideoMetadata> fetchVideoMetadataWithLimit(Integer limit) {
         int limitInt = limit ?: 10
-
         final RedisCommands<String, String> syncCommands = redisConnection.sync()
         KeyScanCursor<String> cursor = syncCommands.scan(ScanArgs.Builder.limit(limitInt).match("content:*"))
-        return getVideoMetadata(cursor.keys, syncCommands)
+        return getVideoMetadata(cursor.keys.take(limitInt), syncCommands)
     }
 
     private List<VideoMetadata> getVideoMetadata(List<String> keys, RedisCommands<String, String> syncCommands) {

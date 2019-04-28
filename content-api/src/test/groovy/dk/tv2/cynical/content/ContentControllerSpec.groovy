@@ -16,12 +16,4 @@ class ContentControllerSpec extends Specification {
     @Shared @AutoCleanup RxHttpClient client = embeddedServer.applicationContext.createBean(RxHttpClient, embeddedServer.getURL())
 
 
-    @Ignore
-    void "test index"() {
-        given:
-        HttpResponse response = client.toBlocking().exchange("/content")
-
-        expect:
-        response.status == HttpStatus.OK
-    }
 }
