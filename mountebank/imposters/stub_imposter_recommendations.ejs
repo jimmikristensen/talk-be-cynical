@@ -34,6 +34,39 @@
             }
           }
         ]
+      },
+      {
+        "predicates": [
+          {
+            "deepEquals": {
+              "method": "GET"
+            }
+          },
+          {
+            "deepEquals": {
+              "path": "/recommendationss"
+            }
+          }
+        ],
+        "responses": [
+          {
+            "is": {
+              "statusCode": 500,
+              "headers": {
+                "Date": "Sun, 14 Apr 2019 15:45:07 GMT",
+                "content-type": "application/json",
+                "content-length": 364,
+                "connection": "close"
+              },
+              "body": "{\"api\":\"recommendation\",\"type\":\"Series\",\"title\":\"En fremmed flytter ind\",\"description\":\"Amanda bliver kontaktet af Casper på Facebook. Han er arving til en af Danmarks rigeste familier, men noget er ikke helt , hvad det ser ud til at være.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/60/44706160-8870be29d29778678e1fe14759e8461e.jpeg\",\"numEpisodes\":4,\"numSeasons\":1}",
+              "_mode": "text",
+              "_proxyResponseTime": 23
+            },
+            "_behaviors": {
+              "wait": 0
+            }
+          }
+        ]
       }
     ]
   }
