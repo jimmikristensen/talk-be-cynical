@@ -1,7 +1,7 @@
 version: '3'
 services:
-  recommendations-api:
-    container_name: recommendations-api_unstable
+  recommendationsapi:
+    container_name: recommendations-api-unstable
     ports:
     - 8082:8080
     image: recommendations-api:unstable
@@ -17,8 +17,8 @@ services:
     - 6379:6379
     volumes:
     - ./redis_volumes/rec_db:/data
-  content-api:
-    container_name: content-api_unstable
+  contentapi:
+    container_name: content-api-unstable
     ports:
     - 8081:8080
     image: content-api:unstable
@@ -34,3 +34,15 @@ services:
     - 6380:6379
     volumes:
     - ./redis_volumes/content_db:/data
+  # api-gateway-hystrix:
+  #   container_name: api-gateway-hystrix
+  #   build:
+  #     context: ./api-gateway-hystrix
+  #     dockerfile: Dockerfile
+  #   ports:
+  #   - 8083:8080
+  hystrix-dashboard:
+    container_name: hystrix-dashboard
+    image: mlabouardy/hystrix-dashboard
+    ports:
+    - 9002:9002
