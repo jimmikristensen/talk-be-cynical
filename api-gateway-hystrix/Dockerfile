@@ -1,4 +1,4 @@
-FROM openjdk:8u171-alpine3.7
-RUN apk --no-cache add curl
+FROM openjdk:11-jdk-slim
+RUN apt-get update && apt-get install -y curl && apt-get install -y inetutils-ping
 COPY build/libs/*-all.jar api-gateway-hystrix.jar
 CMD java ${JAVA_OPTS} -jar api-gateway-hystrix.jar
