@@ -24,7 +24,7 @@ class GraphQLFactory {
 
     @Bean
     @Singleton
-    GraphQL graphQL(ResourceResolver resourceResolver, RecommendationDataFetcher helloDataFetcher, ContentDataFetcher hello2DataFetcher) {
+    GraphQL graphQL(ResourceResolver resourceResolver, RecommendationDataFetcher recommendationContentDataFetcher, ContentDataFetcher editorialContentDataFetcher) {
 
         def schemaParser = new SchemaParser()
         def schemaGenerator = new SchemaGenerator()
@@ -38,8 +38,8 @@ class GraphQLFactory {
         def runtimeWiring = RuntimeWiring.newRuntimeWiring()
                 .type("Query", {
                     typeWiring -> typeWiring
-                    .dataFetcher('editorialContent', hello2DataFetcher)
-                    .dataFetcher("recommendationContent", helloDataFetcher)
+                    .dataFetcher('editorialContent', editorialContentDataFetcher)
+                    .dataFetcher("recommendationContent", recommendationContentDataFetcher)
                 })
                 .type("Content", {
                     typeWiring -> typeWiring
