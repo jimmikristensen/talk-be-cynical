@@ -1,9 +1,12 @@
 ---
 micronaut:
-    application:
-        name: api-gateway-hystrix
-    server:
-        port: 8080
+  application:
+    name: api-gateway-hystrix
+  server:
+    port: 8080
+  http:
+    client:
+      read-timeout: 1s
 ---
 graphql:
   enabled: true
@@ -15,10 +18,6 @@ graphql:
     template-parameters:
     page-title: GraphiQL
 ---
-jackson:
-  deserialization:
-    unwrapSingleValueArrays: true
----
 hystrix:
   stream:
-    enabled: false
+    enabled: true

@@ -22,7 +22,9 @@ dependencyManagement {
 }
 
 dependencies {
-    compile "io.micronaut.configuration:micronaut-netflix-hystrix"
+//    compile "io.micronaut.configuration:micronaut-netflix-hystrix"
+    compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.18'
+    compile group: 'com.netflix.hystrix', name: 'hystrix-metrics-event-stream', version: '1.5.18'
     compile 'io.micronaut.graphql:micronaut-graphql:1.0.0'
     compile "io.micronaut:micronaut-http-client"
     compile "io.micronaut:micronaut-http-server-netty"
