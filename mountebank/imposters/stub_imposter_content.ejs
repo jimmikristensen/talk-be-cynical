@@ -57,6 +57,46 @@
           {
             "deepEquals": {
               "query": {
+                "limit": "2"
+              }
+            }
+          }
+        ],
+        "responses": [
+          {
+            "is": {
+              "statusCode": 200,
+              "headers": {
+                "Date": "Sun, 28 Apr 2019 14:39:53 GMT",
+                "content-type": "application/json",
+                "content-length": 1556,
+                "connection": "close"
+              },
+              "body": "[{\"api\":\"content-api\",\"id\":\"content:series-10\",\"type\":\"Series\",\"title\":\"Løb som en pige\",\"description\":\"Løb som en pige følger Visiline igennem fire afgørende år, hvor hun kæmper med at finde sin vej i en mandsdomineret og konservativ verden.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/59/45748359-98ed876d30f1634ce9181f4b013f56c6.jpeg\",\"numEpisodes\":10,\"numSeasons\":1},{\"api\":\"content-api\",\"id\":\"content:series-5\",\"type\":\"Series\",\"title\":\"Station 2: Fængslet\",\"description\":\"Der sidder op imod 250 indsatte i Danmarks nyeste fængsel. 'Station 2' har som det første tv-hold fået adgang til Storstrøm Fængsel på Falster og har i et halvt år fulgt de indsatte for at skildre deres hverdag.\",\"imageURL\":\"https://imgix.ovp.tv2.dk/s/46/45718846-e606f448598f52474d0a1fa1d0b249ac.jpeg\",\"numEpisodes\":3,\"numSeasons\":2}]",
+              "_mode": "text",
+              "_proxyResponseTime": 27
+            },
+            "_behaviors": {
+              "wait": 27
+            }
+          }
+        ]
+      },
+      {
+        "predicates": [
+          {
+            "deepEquals": {
+              "method": "GET"
+            }
+          },
+          {
+            "deepEquals": {
+              "path": "/content"
+            }
+          },
+          {
+            "deepEquals": {
+              "query": {
                 "limit": "3"
               }
             }
