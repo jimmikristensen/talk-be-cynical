@@ -1,6 +1,7 @@
 package dk.tv2.cynical.gateway.hystrix.hystrixcommand
 
 import com.netflix.hystrix.*
+import dk.tv2.cynical.gateway.hystrix.httpclient.ContentClient
 import dk.tv2.cynical.gateway.hystrix.httpclient.RecommendationsClient
 import dk.tv2.cynical.gateway.hystrix.model.Content
 import io.micronaut.http.HttpRequest
@@ -22,8 +23,9 @@ class RecommendationCommand extends HystrixCommand<Content[]> {
 
     def limit
     RecommendationsClient recommendationsClient
+    ContentClient contentClient
 
-    RecommendationCommand(def limit, RecommendationsClient recommendationsClient) {
+    RecommendationCommand(def limit, RecommendationsClient recommendationsClient, ContentClient contentClient) {
         super(Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey(CMD_NAME+"-Pool"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey(CMD_NAME))
@@ -36,6 +38,7 @@ class RecommendationCommand extends HystrixCommand<Content[]> {
 
         this.limit = limit
         this.recommendationsClient = recommendationsClient
+        this.contentClient = contentClient
     }
 
     @Override
@@ -51,6 +54,10 @@ class RecommendationCommand extends HystrixCommand<Content[]> {
 
     @Override
     protected Content[] getFallback() {
-        return []
+        if (limit in Integer) {
+            return contentClient.fetchContent(limit as int)
+        } else {
+            return contentClient.fetchContent()
+        }
     }
 }

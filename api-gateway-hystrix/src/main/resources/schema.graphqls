@@ -4,6 +4,9 @@ type Query {
 }
 
 interface Content {
+    isCircuitBreakerOpen: Boolean
+    isResponseFromFallback: Boolean
+    isResponseShortCircuited: Boolean
     id: String
     api : String
     type : String
@@ -13,6 +16,9 @@ interface Content {
 }
 
 type Movie implements Content {
+    isCircuitBreakerOpen: Boolean
+    isResponseFromFallback: Boolean
+    isResponseShortCircuited: Boolean
     id: String
     api : String
     type : String
@@ -23,6 +29,9 @@ type Movie implements Content {
 }
 
 type Series implements Content {
+    isCircuitBreakerOpen: Boolean
+    isResponseFromFallback: Boolean
+    isResponseShortCircuited: Boolean
     id: String
     api : String
     type : String
@@ -34,6 +43,9 @@ type Series implements Content {
 }
 
 type Episode implements Content {
+    isCircuitBreakerOpen: Boolean
+    isResponseFromFallback: Boolean
+    isResponseShortCircuited: Boolean
     id: String
     api : String
     type : String

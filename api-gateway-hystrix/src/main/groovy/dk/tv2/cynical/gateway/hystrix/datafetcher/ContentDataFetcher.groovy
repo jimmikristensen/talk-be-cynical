@@ -26,7 +26,15 @@ class ContentDataFetcher implements DataFetcher<Content[]> {
         def keyArg = environment.getArgument('key')
 
         HystrixCommand<Content[]> command = new ContentCommand(limitArg, keyArg, contentClient)
-        return command.execute()
+        def contentList = command.execute()
+
+        contentList.each {
+            it.isCircuitBreakerOpen = command.isCircuitBreakerOpen()
+            it.isResponseFromFallback = command.isResponseFromFallback()
+            it.isResponseShortCircuited = command.isResponseShortCircuited()
+        }
+
+        return contentList
     }
 
 }
