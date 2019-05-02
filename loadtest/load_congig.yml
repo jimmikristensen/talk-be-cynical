@@ -1,0 +1,16 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - post:
+          url: "/graphql"
+          headers: 
+            Accept: "application/json"
+            Content-Type: "application/json"
+          json:
+            query: "query test {  recommendationContent(limit: 1) {    isCircuitBreakerOpen    isResponseFromFallback    isResponseShortCircuited    id    api    type    description    imageURL    title    ... on Series {      numEpisodes      numSeasons    }  }  editorialContent(limit: 1) {    isCircuitBreakerOpen    isResponseFromFallback    isResponseShortCircuited    id    api    type    description    imageURL    title    ... on Movie {      genre    }    ... on Series {      numEpisodes      numSeasons    }    ... on Episode {      episode      season    }  }}"
+            variables: null
+            operationName: "test"
