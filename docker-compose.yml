@@ -48,11 +48,6 @@ services:
   #     dockerfile: Dockerfile
   #   ports:
   #   - 8083:8080
-  hystrix-dashboard:
-    container_name: hystrix-dashboard
-    image: mlabouardy/hystrix-dashboard
-    ports:
-    - 9002:9002
   mountebank:
     container_name: mountebank
     image: jkris/mountebank:latest
