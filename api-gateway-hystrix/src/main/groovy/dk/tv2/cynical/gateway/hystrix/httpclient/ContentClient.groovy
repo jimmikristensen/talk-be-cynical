@@ -6,7 +6,9 @@ import io.micronaut.http.client.annotation.Client
 
 import javax.annotation.Nullable
 
-@Client('http://localhost:8090')
+// Declarative client for downstream content service
+
+@Client("http://\${micronaut.application.content.hostname}:\${micronaut.application.content.port}")
 interface ContentClient {
 
     @Get('/content')

@@ -3,20 +3,10 @@ micronaut:
   application:
     name: api-gateway-hystrix
 
-    # real content service
-#    content:
-#      hostname: localhost
-#      port: 8081
-
     # mountebank content service
     content:
       hostname: localhost
       port: 8090
-
-    # real recommendation service
-#    recommendation:
-#      hostname: localhost
-#      port: 8082
 
     # mountebank recommendation service
     recommendation:
@@ -27,18 +17,14 @@ micronaut:
     port: 8080
   http:
     client:
-      read-timeout: 1s
+      read-timeout: 30s
 ---
 graphql:
   enabled: true
   path: /graphql
   graphiql:
-    enabled: true
+    enabled: false
     path: /graphiql
     template-path: classpath:graphiql/index.html
     template-parameters:
     page-title: GraphiQL
----
-hystrix:
-  stream:
-    enabled: true

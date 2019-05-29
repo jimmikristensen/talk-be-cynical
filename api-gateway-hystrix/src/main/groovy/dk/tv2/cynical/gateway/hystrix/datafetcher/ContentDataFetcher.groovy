@@ -29,9 +29,9 @@ class ContentDataFetcher implements DataFetcher<Content[]> {
         def contentList = command.execute()
 
         contentList.each {
-            it.isCircuitBreakerOpen = command.isCircuitBreakerOpen()
-            it.isResponseFromFallback = command.isResponseFromFallback()
-            it.isResponseShortCircuited = command.isResponseShortCircuited()
+            it?.isCircuitBreakerOpen = command.isCircuitBreakerOpen()
+            it?.isResponseFromFallback = command.isResponseFromFallback()
+            it?.isResponseShortCircuited = command.isResponseShortCircuited()
         }
 
         return contentList

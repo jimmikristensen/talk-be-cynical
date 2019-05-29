@@ -4,15 +4,16 @@ import com.netflix.hystrix.*
 import dk.tv2.cynical.gateway.hystrix.httpclient.ContentClient
 import dk.tv2.cynical.gateway.hystrix.httpclient.RecommendationsClient
 import dk.tv2.cynical.gateway.hystrix.model.Content
-import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
 import io.micronaut.http.client.annotation.Client
-import io.micronaut.http.client.exceptions.HttpClientResponseException
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import javax.inject.Inject
-import java.util.concurrent.CompletableFuture
 
 class RecommendationCommand extends HystrixCommand<Content[]> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RecommendationCommand.class)
 
     @Client("http://localhost:8091")
     @Inject RxHttpClient client
@@ -54,6 +55,8 @@ class RecommendationCommand extends HystrixCommand<Content[]> {
 
     @Override
     protected Content[] getFallback() {
+        LOG.warn('Recommendation API Fallback Executed')
+
         if (limit in Integer) {
             return contentClient.fetchContent(limit as int)
         } else {

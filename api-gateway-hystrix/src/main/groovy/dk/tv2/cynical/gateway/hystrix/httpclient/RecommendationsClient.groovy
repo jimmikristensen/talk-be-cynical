@@ -6,8 +6,9 @@ import io.micronaut.http.client.annotation.Client
 
 import javax.annotation.Nullable
 
-@Client(value = 'http://localhost:8091') // mountebank
-//@Client(value = 'http://localhost:8082') // real service
+// Declarative client for downstream recommendation service
+
+@Client("http://\${micronaut.application.recommendation.hostname}:\${micronaut.application.recommendation.port}")
 interface RecommendationsClient {
 
     @Get('/recommendations')

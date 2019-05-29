@@ -5,8 +5,12 @@ import com.netflix.hystrix.HystrixCommandGroupKey
 import com.netflix.hystrix.HystrixCommandKey
 import dk.tv2.cynical.gateway.hystrix.httpclient.ContentClient
 import dk.tv2.cynical.gateway.hystrix.model.Content
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class ContentCommand extends HystrixCommand<Content[]> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContentCommand.class)
 
     static final String CMD_NAME = "ContentCommand"
     static final int THREAD_POOL_SIZE = 15
@@ -34,18 +38,38 @@ class ContentCommand extends HystrixCommand<Content[]> {
 
     @Override
     protected Content[] run() throws Exception {
+        Content[] content
+
         if (limitArg in Integer) {
-            return contentClient.fetchContent(limitArg as int)
+            content = contentClient.fetchContent(limitArg as int)
         } else if (keyArg != null) {
-            return contentClient.fetchContent(keyArg as String)
+            content = contentClient.fetchContent(keyArg as String)
         } else {
-            return contentClient.fetchContent()
+            content = contentClient.fetchContent()
         }
+
+        // If returned content is null, it means the result set could not be deserialized
+        // it might be because of wrong mime type returned by content server
+        if (content.first() == null) {
+            throw new NullPointerException('Unable to deserialize null object from content server')
+        }
+
+        return content
     }
 
     @Override
     protected Content[] getFallback() {
-        return []
+        LOG.warn('Content API Fallback Executed')
+        return [new Content(
+                id: '123-fallback',
+                api: 'content-api',
+                type: 'episode',
+                title: 'Fallback',
+                description: 'This is a fallback episode, you could use anything e.g. cached content',
+                imageURL: 'no image',
+                episode: 1,
+                season: 1
+        )]
     }
 
 }
