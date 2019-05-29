@@ -22,7 +22,6 @@ dependencyManagement {
 }
 
 dependencies {
-//    compile "io.micronaut.configuration:micronaut-netflix-hystrix"
     compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.18'
     compile group: 'com.netflix.hystrix', name: 'hystrix-metrics-event-stream', version: '1.5.18'
     compile 'io.micronaut.graphql:micronaut-graphql:1.0.0'
@@ -34,9 +33,13 @@ dependencies {
     compileOnly "io.micronaut:micronaut-inject-groovy"
     runtime "ch.qos.logback:logback-classic:1.2.3"
     testCompile "io.micronaut:micronaut-inject-groovy"
+    testCompile 'org.testcontainers:testcontainers:1.11.2'
+    testCompile "org.testcontainers:spock:1.11.2"
     testCompile("org.spockframework:spock-core") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"
     }
+    testCompile "org.objenesis:objenesis:3.0.1"
+    testRuntime "cglib:cglib-nodep:3.2.12"
 }
 
 shadowJar {
@@ -48,4 +51,11 @@ run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
 mainClassName = "dk.tv2.cynical.gateway.hystrix.Application"
 tasks.withType(GroovyCompile) {
     groovyOptions.forkOptions.jvmArgs.add('-Dgroovy.parameters=true')
+}
+
+tasks.withType(Test) {
+    testLogging {
+        events "passed", "failed", "skipped", "standardOut", "standardError"
+        showExceptions true
+    }
 }
